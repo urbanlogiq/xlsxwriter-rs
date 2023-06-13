@@ -1124,7 +1124,7 @@ impl<'a> Worksheet<'a> {
                 row,
                 col,
                 buffer.as_ptr(),
-                buffer.len() as libxlsxwriter_sys::size_t,
+                buffer.len(),
             );
             if result == libxlsxwriter_sys::lxw_error_LXW_NO_ERROR {
                 Ok(())
@@ -1148,7 +1148,7 @@ impl<'a> Worksheet<'a> {
                 row,
                 col,
                 buffer.as_ptr(),
-                buffer.len() as libxlsxwriter_sys::size_t,
+                buffer.len(),
                 &mut opt_struct,
             );
             if result == libxlsxwriter_sys::lxw_error_LXW_NO_ERROR {

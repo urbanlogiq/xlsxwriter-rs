@@ -86,14 +86,8 @@ fn main() -> io::Result<()> {
         }
     }
 
-    if env::var("CARGO_FEATURE_NO_MD5").is_ok() {
-        build.define("USE_NO_MD5", None);
-    } else if env::var("CARGO_FEATURE_USE_OPENSSL_MD5").is_ok() {
-        build.define("USE_OPENSSL_MD5", None);
-        println!("cargo:rustc-link-lib=crypto");
-    } else {
-        build.file("third_party/libxlsxwriter/third_party/md5/md5.c");
-    }
+    build.define("USE_OPENSSL_MD5", None);
+    println!("cargo:rustc-link-lib=crypto");
 
     if cfg!(windows) {
         build

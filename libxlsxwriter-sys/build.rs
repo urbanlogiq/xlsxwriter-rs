@@ -86,8 +86,8 @@ fn main() -> io::Result<()> {
         }
     }
 
+    let libcrypto = pkg_config::Config::new().probe("libcrypto").unwrap();
     build.define("USE_OPENSSL_MD5", None);
-    println!("cargo:rustc-link-lib=crypto");
 
     if cfg!(windows) {
         build
